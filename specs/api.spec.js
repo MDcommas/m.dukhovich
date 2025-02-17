@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { createUser } from '../utils/createUser'
+import { createUser, generateToken, authRequest } from '../framework/services/userRequests'
 
 const Password = '123qweQWE!'
 const invalidPassword = '123'
@@ -59,5 +59,41 @@ describe('Check user API routes', () => {
         }
       }
     })
+  })
+
+  it('should authorize successfully', async () => {
+    const response = await generateToken(userEmail, Password)
+
+    expect(response.status).toBe(200)
+    expect(response.data.token).toBeTruthy()
+    expect(response.data.status).toBe('Success')
+    expect(response.data.result).toBe('User authorized successfully.')
+  })
+
+  it('should be failed with invalid password', async () => {
+    const response = await generateToken(userEmail, invalidPassword)
+
+    expect(response.status).toBe(200)
+    expect(response.data.token).toBe(null)
+    expect(response.data.status).toBe('Failed')
+    expect(response.data.result).toBe('User authorization failed.')
+  })
+
+  it('shoul be authorized true', async () => {
+    await generateToken(userEmail, Password)
+
+    const authResponse = await authRequest(userEmail, Password)
+    expect(authResponse.status).toBe(200)
+    expect(authResponse.data).toBe(true)
+  })
+
+  it('shoul be authorized false', async () => {
+    userEmail = faker.internet.email()
+    await createUser(userEmail, Password)
+
+    const authResponse = await authRequest(userEmail, Password)
+    expect(authResponse.status).toBe(200)
+    expect(authResponse.data).toBe(false)
+    console.log(authResponse)
   })
 })
