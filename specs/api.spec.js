@@ -1,7 +1,6 @@
 import { faker } from '@faker-js/faker'
-import config from '../framework/config/config' 
+import config from '../framework/config/config'
 import { createUser, generateToken, authRequest } from '../framework/services/userRequests'
-
 
 describe('Check user API routes', () => {
   let userEmail
