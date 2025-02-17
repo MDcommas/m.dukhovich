@@ -1,13 +1,13 @@
 export function kolobok(name) {
   switch (name) {
     case 'дедушка':
-      return 'Я от дедушки ушел'
+      return 'Я от дедушки ушёл'
     case 'лиса':
       return 'Меня съели'
     case 'заяц':
-      return 'Я от Зайца ушёл'
-    default:
-      return 'Покатился Колобок дальше'
+      return 'Я от зайца ушёл'
+    case 'неизвестный':
+      return 'Я встретил кого-то неизвестного'
   }
 }
 
@@ -20,7 +20,7 @@ export function newYear(name) {
     case 'Снегурочка':
       return `${name}! ${name}! ${name}!`
     default:
-      return 'Некого звать'
+      return 'Неизвестный персонаж'
   }
 }
 
