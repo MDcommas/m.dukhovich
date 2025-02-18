@@ -1,20 +1,22 @@
 import { faker } from '@faker-js/faker'
-import config from '../framework/config/config'
 import { createUser, generateToken, authRequest } from '../framework/services/userRequests'
+
+const Password = '123qweQWE!'
+const invalidPassword = '123'
 
 describe('Check user API routes', () => {
   let userEmail
 
   it('should successfully create a user', async () => {
     userEmail = faker.internet.email()
-    const response = await createUser(userEmail, config.Password)
+    const response = await createUser(userEmail, Password)
 
     expect(response.status).toBe(201)
     expect(response.data.username).toEqual(userEmail)
   })
 
   it('should be an error when already exists', async () => {
-    await expect(createUser(userEmail, config.Password)).rejects.toMatchObject({
+    await expect(createUser(userEmail, Password)).rejects.toMatchObject({
       response: {
         status: 406,
         data: { code: '1204', message: 'User exists!' }
@@ -23,7 +25,7 @@ describe('Check user API routes', () => {
   })
 
   it('should be an error when invalid password', async () => {
-    await expect(createUser(userEmail, config.invalidPassword)).rejects.toMatchObject({
+    await expect(createUser(userEmail, invalidPassword)).rejects.toMatchObject({
       response: {
         status: 400,
         data: {
@@ -36,7 +38,7 @@ describe('Check user API routes', () => {
   })
 
   it('should be an error when empty username', async () => {
-    await expect(createUser('', config.Password)).rejects.toMatchObject({
+    await expect(createUser('', Password)).rejects.toMatchObject({
       response: {
         status: 400,
         data: {
@@ -60,7 +62,7 @@ describe('Check user API routes', () => {
   })
 
   it('should authorize successfully', async () => {
-    const response = await generateToken(userEmail, config.Password)
+    const response = await generateToken(userEmail, Password)
 
     expect(response.status).toBe(200)
     expect(response.data.token).toBeTruthy()
@@ -69,7 +71,7 @@ describe('Check user API routes', () => {
   })
 
   it('should be failed with invalid password', async () => {
-    const response = await generateToken(userEmail, config.invalidPassword)
+    const response = await generateToken(userEmail, invalidPassword)
 
     expect(response.status).toBe(200)
     expect(response.data.token).toBe(null)
@@ -78,18 +80,18 @@ describe('Check user API routes', () => {
   })
 
   it('shoul be authorized true', async () => {
-    await generateToken(userEmail, config.Password)
+    await generateToken(userEmail, Password)
 
-    const authResponse = await authRequest(userEmail, config.Password)
+    const authResponse = await authRequest(userEmail, Password)
     expect(authResponse.status).toBe(200)
     expect(authResponse.data).toBe(true)
   })
 
   it('shoul be authorized false', async () => {
     userEmail = faker.internet.email()
-    await createUser(userEmail, config.Password)
+    await createUser(userEmail, Password)
 
-    const authResponse = await authRequest(userEmail, config.Password)
+    const authResponse = await authRequest(userEmail, Password)
     expect(authResponse.status).toBe(200)
     expect(authResponse.data).toBe(false)
   })

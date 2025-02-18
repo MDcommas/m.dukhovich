@@ -1,9 +1,9 @@
 import axios from 'axios'
 import config from '../config/config'
 
-export const createUser = async (email, password) => {
+export const createUser = async (username, password) => {
   const response = await axios.post(config.userUrl, {
-    userName: email,
+    userName: username,
     password: password
   })
 
