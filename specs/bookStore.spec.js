@@ -11,14 +11,12 @@ beforeAll(async () => {
   const password = creds.password
   const userResponse = await createUser(username, password)
   userId = userResponse.data.userID
-  console.log(userResponse)
 })
 
 describe('Check books api routes', () => {
   it('should successfully create a book', async () => {
     const isbn = '9781449325862'
     const response = await createBook(userId, isbn, creds.username, creds.password)
-    console.log(response)
     expect(response.status).toBe(201)
     expect(response.data.books).toBeDefined()
     expect(response.data.books.length).toBeGreaterThan(0)
