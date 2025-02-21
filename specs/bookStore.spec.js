@@ -27,8 +27,8 @@ describe('Check books api routes', () => {
     const isbn = '9781449325862'
     await expect(createBook(userId, isbn, creds.username, creds.password)).rejects.toMatchObject({
       response: {
-        status: 400,
-        data: { code: '1210', message: "ISBN already present in the User's Collection!" }
+        data: { code: '1210', message: `ISBN already present in the User's Collection!` },
+        status: 400
       }
     })
   })
