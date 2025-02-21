@@ -1,10 +1,9 @@
-import axios from 'axios'
-import config from '../config/config'
+import { client } from './apiClient.js'
 
 export const createBook = async (userId, isbn, username, password) => {
   try {
-    const response = await axios.post(
-      config.bookUrl,
+    const response = await client.post(
+      'BookStore/v1/Books',
       {
         userId: userId,
         collectionOfIsbns: [
@@ -30,7 +29,7 @@ export const createBook = async (userId, isbn, username, password) => {
 
 export const getBook = async isbn => {
   try {
-    const response = await axios.get(`${config.bookUrl}?isbn=${isbn}`)
+    const response = await client.get(`/BookStore/v1/Books?isbn=${isbn}`)
 
     return { status: response.status, data: response.data }
   } catch (error) {
@@ -41,7 +40,7 @@ export const getBook = async isbn => {
 
 export const deleteBook = async (userId, username, password) => {
   try {
-    const response = await axios.delete(`${config.bookUrl}?UserId=${userId}`, {
+    const response = await client.delete(`/BookStore/v1/Books?UserId=${userId}`, {
       auth: {
         username,
         password
