@@ -2,11 +2,8 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,21 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.11
-          cache: 'npm'
-      - run: npm run lint:ci
-
-  test:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-      
+  codestyle:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,11 +25,25 @@ jobs:
           node-version: 22.11
           cache: 'npm'
       - run: npm ci
-      - run: echo "${{ secrets.ENV_FILE }}" >> .env
+      - run: npm run lint:ci
+
+  test:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.11
+          cache: 'npm'
+      - run: npm ci
+      - run: echo "${{vars.ENV_FILE}}" >> .env
       - run: npm test
       - run: npm run allure:ci
-      - name: Check Allure Report
-        run: ls -la reports/allure-report
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
@@ -58,14 +55,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          branch: gh-pages
-          folder: reports/allure-report
 
   notification:
     if: always()
+    needs: [ codestyle, test ]
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
     steps:
-      - name: Send Notification
-        run: echo "Notification step"
-
+      - run: |
+          curl --request POST \
+               --url https://api.telegram.org/bot${{secrets.TEST_TELEGRAM_TOKEN}}/sendMessage \
+               --header 'Content-Type: application/json' \
+                --data '{ "chat_id": "${{secrets.TEST_TELEGRAM_CHAT_ID}}", "text": "Report link: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" }'
