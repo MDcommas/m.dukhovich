@@ -38,7 +38,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-# check with debug
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -50,10 +49,6 @@ jobs:
       - run: echo "${{vars.ENV_FILE}}" >> .env
       - run: npm test
       - run: npm run allure:ci
-      - name: Check file system permissions
-        run: |
-          ls -l ${{ github.workspace }}
-          ls -l ${{ github.workspace }}/reports
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
