@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-
   workflow_dispatch:
 
 permissions:
@@ -48,22 +47,20 @@ jobs:
           java-version: '17'
         
       - name: Install Allure CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
+        run: npm install -g allure-commandline --save-dev
 
       - run: npm ci
-      - run: echo "${{vars.ENV_FILE}}" >> .env
+      - run: echo "${{vars.ENV_FILE}}" > .env
       - run: npm test
 
       - name: Check if Allure results exist
-        run: ls -la allure-results || echo "No allure-results found!"
+        run: test -d allure-results && echo "Allure results found" || echo "No allure-results found!"
 
       - name: Generate Allure Report
-        run: npm run allure:ci
+        run: npx allure generate allure-results --clean -o reports/allure-report
 
       - name: Check if Allure report exists
-        run: ls -la reports/allure-report || echo "No Allure report found!"
+        run: test -d reports/allure-report && echo "Allure report generated" || echo "No Allure report found!"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -93,4 +90,4 @@ jobs:
           curl --request POST \
                --url https://api.telegram.org/bot${{secrets.TEST_TELEGRAM_TOKEN}}/sendMessage \
                --header 'Content-Type: application/json' \
-                --data '{ "chat_id": "${{secrets.TEST_TELEGRAM_CHAT_ID}}", "text": "Report link: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" }'
+               --data '{ "chat_id": "${{secrets.TEST_TELEGRAM_CHAT_ID}}", "text": "Report link: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" }'
