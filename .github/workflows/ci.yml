@@ -40,22 +40,40 @@ jobs:
         with:
           node-version: 22.11
           cache: 'npm'
+
+      - name: Install Java (required for Allure)
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - run: npm ci
       - run: echo "${{vars.ENV_FILE}}" >> .env
       - run: npm test
-      - run: npm run allure:ci
+
+      - name: Check if Allure results exist
+        run: ls -la allure-results || echo "No allure-results found!"
+
+      - name: Generate Allure Report
+        run: npm run allure:ci
+
+      - name: Check if Allure report exists
+        run: ls -la reports/allure-report || echo "No Allure report found!"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
           enablement: true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'reports/allure-report'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
+        
   notification:
     if: always()
     needs: [ codestyle, test ]
