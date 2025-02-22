@@ -25,11 +25,11 @@ describe('Check books api routes', () => {
 
   it('should be an error when already exists', async () => {
     const isbn = '9781449325862'
-    await expect(createBook(userId, isbn, creds.username, creds.password)).rejects.toMatchObject({
-      response: {
-        status: 400,
-        data: { code: '1210', message: "ISBN already present in the User's Collection!" }
-      }
+    const response = await createBook(userId, isbn, creds.username, creds.password)
+
+    expect(response).toMatchObject({
+      data: { code: '1210', message: `ISBN already present in the User's Collection!` },
+      status: 400
     })
   })
 
