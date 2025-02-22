@@ -55,6 +55,9 @@ jobs:
 
       - name: Check if Allure results exist
         run: test -d allure-results && echo "Allure results found" || echo "No allure-results found!"
+      
+      - name: Debug Allure results
+        run: ls -la allure-results || echo "No allure-results found!"
 
       - name: Generate Allure Report
         run: npx allure generate allure-results --clean -o reports/allure-report

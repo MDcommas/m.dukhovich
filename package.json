@@ -21,6 +21,7 @@
     "@eslint/js": "^9.12.0",
     "@types/jest": "^29.5.14",
     "allure-jest": "^3.2.0",
+    "allure-mocha": "^3.2.0",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.11.0",
