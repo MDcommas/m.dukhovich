@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node src/main.js",
+    "allure:ci": "allure generate allure-results --clean -o reports/allure-report",
     "lint:ci": "eslint .",
     "lint": "eslint . --fix",
     "test": "jest"
