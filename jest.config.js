@@ -3,6 +3,12 @@ const config = {
   coverageProvider: 'v8',
   reporters: [
     'default',
+    [
+      'jest-allure',
+      {
+        outputFolder: 'allure-results'
+      }
+    ],
     ['github-actions', { silent: false }],
     'summary',
     [
@@ -12,11 +18,7 @@ const config = {
         filename: 'index.html'
       }
     ]
-  ],
-  testEnvironment: 'allure-jest/node',
-  testEnvironmentOptions: {
-    resultsDir: 'reports/allure-results'
-  }
+  ]
 }
 
-export default config
+module.exports = config
