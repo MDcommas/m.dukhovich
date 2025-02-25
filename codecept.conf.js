@@ -8,7 +8,7 @@ setCommonPlugins()
 
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
-  tests: './proectnaya_praca/ui/features/*.feature',
+  tests: './e2e/ui/features/*.feature',
   output: './output',
   helpers: {
     Playwright: {
@@ -18,13 +18,13 @@ exports.config = {
     }
   },
   gherkin: {
-    features: './proectnaya_praca/ui/features/*.feature',
-    steps: ['./proectnaya_praca/ui/steps/login.steps.js']
+    features: './e2e/ui/features/*.feature',
+    steps: ['./e2e/ui/steps/login.steps.js']
   },
   include: {
-    I: './proectnaya_praca/ui/steps_file.js',
-    LoginPage: './proectnaya_praca/ui/page_objects/LoginPage.js',
-    ErrorPage: './proectnaya_praca/ui/page_objects/ErrorPage.js'
+    I: './e2e/ui/steps_file.js',
+    LoginPage: './e2e/ui/page_objects/LoginPage.js',
+    ErrorPage: './e2e/ui/page_objects/ErrorPage.js'
   },
   plugins: {
     allure: {
