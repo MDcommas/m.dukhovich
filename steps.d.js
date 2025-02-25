@@ -1,5 +1,5 @@
 /// <reference types='codeceptjs' />
-import steps_file from './e2e/ui/steps_file'
+import steps_file from './e2e/codecept/steps_file'
 import LoginPage from './ui/page_objects/LoginPage'
 import ErrorPage from './ui/page_objects/ErrorPage'
 

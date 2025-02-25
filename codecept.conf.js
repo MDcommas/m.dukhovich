@@ -8,7 +8,7 @@ setCommonPlugins()
 
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
-  tests: './e2e/ui/features/*.feature',
+  tests: './e2e/codecept/features/*.feature',
   output: './output',
   helpers: {
     Playwright: {
@@ -18,13 +18,13 @@ exports.config = {
     }
   },
   gherkin: {
-    features: './e2e/ui/features/*.feature',
-    steps: ['./e2e/ui/steps/login.steps.js']
+    features: './e2e/codecept/features/*.feature',
+    steps: ['./e2e/codecept/steps/login.steps.js']
   },
   include: {
-    I: './e2e/ui/steps_file.js',
-    LoginPage: './e2e/ui/page_objects/LoginPage.js',
-    ErrorPage: './e2e/ui/page_objects/ErrorPage.js'
+    I: './e2e/codecept/steps_file.js',
+    LoginPage: './e2e/codecept/page_objects/LoginPage.js',
+    ErrorPage: './e2e/codecept/page_objects/ErrorPage.js'
   },
   plugins: {
     allure: {
