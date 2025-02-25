@@ -84,4 +84,45 @@ describe('Order API Tests', () => {
     expect(status).toBe(200)
     expect(data).toBeInstanceOf(Object)
   })
+
+  it('should update an order successfully', async () => {
+    const newOrder = orderData.getValidOrder()
+    const createdOrder = await orderRequests.addOrder(newOrder)
+    expect(createdOrder.status).toBe(200)
+
+    const updatedOrder = { ...createdOrder.data, quantity: 10 }
+    const deleteResponse = await orderRequests.deleteOrder(createdOrder.data.id)
+    expect(deleteResponse.status).toBe(200)
+
+    const { status, data } = await orderRequests.addOrder(updatedOrder)
+    expect(status).toBe(200)
+    expect(data.quantity).toBe(10)
+    expect(data).toMatchSchema(orderSchema)
+
+    createdOrders.push(data.id)
+  })
+
+  it('should get all orders', async () => {
+    const newOrder1 = orderData.getValidOrder()
+    const newOrder2 = orderData.getValidOrder()
+    await orderRequests.addOrder(newOrder1)
+    await orderRequests.addOrder(newOrder2)
+
+    const { status, data } = await orderRequests.getInventories()
+    expect(status).toBe(200)
+    expect(data).toBeInstanceOf(Object)
+  })
+
+  it('should check order status', async () => {
+    const newOrder = orderData.getValidOrder()
+    const createdOrder = await orderRequests.addOrder(newOrder)
+    expect(createdOrder.status).toBe(200)
+
+    const orderId = createdOrder.data.id
+    const { status, data } = await orderRequests.getOrder(orderId)
+    expect(status).toBe(200)
+    expect(data.status).toBeDefined()
+
+    createdOrders.push(orderId)
+  })
 })
