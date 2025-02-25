@@ -1,0 +1,336 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1740512378190' stop='1740512476993'>
+    <name>User Login</name>
+    <title>User Login</title>
+    <test-cases>
+        <test-case start='1740512379201' status='passed' stop='1740512411925'>
+            <name>Successful login with valid data</name>
+            <title>Successful login with valid data</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='codeceptjs'/>
+            </labels>
+            <parameters/>
+            <steps>
+                <step start='1740512379732' status='passed' stop='1740512410665'>
+                    <name>Given I am on the login page ""</name>
+                    <title>Given I am on the login page ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512379732' status='passed' stop='1740512410665'>
+                            <name>On LoginPage: goto </name>
+                            <title>On LoginPage: goto </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512379732' status='passed' stop='1740512410665'>
+                                    <name>I am on page "/"</name>
+                                    <title>I am on page "/"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512410665' status='passed' stop='1740512410843'>
+                    <name>When I fill the username "demo" ""</name>
+                    <title>When I fill the username "demo" ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512410665' status='passed' stop='1740512410843'>
+                            <name>On LoginPage: fill username "demo"</name>
+                            <title>On LoginPage: fill username "demo"</title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512410665' status='passed' stop='1740512410843'>
+                                    <name>I fill field "[name="username"]", "demo"</name>
+                                    <title>I fill field "[name="username"]", "demo"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512410843' status='passed' stop='1740512411064'>
+                    <name>And I fill the password "demo" ""</name>
+                    <title>And I fill the password "demo" ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512410843' status='passed' stop='1740512411064'>
+                            <name>On LoginPage: fill password "demo"</name>
+                            <title>On LoginPage: fill password "demo"</title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512410843' status='passed' stop='1740512411064'>
+                                    <name>I fill field "[name="password"]", "demo"</name>
+                                    <title>I fill field "[name="password"]", "demo"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512411064' status='passed' stop='1740512411460'>
+                    <name>And I submit the login form ""</name>
+                    <title>And I submit the login form ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512411064' status='passed' stop='1740512411460'>
+                            <name>On LoginPage: submit login </name>
+                            <title>On LoginPage: submit login </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512411064' status='passed' stop='1740512411460'>
+                                    <name>I click "//*[@id="loginform"]/button"</name>
+                                    <title>I click "//*[@id="loginform"]/button"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512411460' status='passed' stop='1740512411925'>
+                    <name>Then I see "Good Evening demo!" on the page ""</name>
+                    <title>Then I see "Good Evening demo!" on the page ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512411460' status='passed' stop='1740512411925'>
+                            <name>I see "Good Evening demo!"</name>
+                            <title>I see "Good Evening demo!"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                    </steps>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1740512412409' status='passed' stop='1740512445240'>
+            <name>Should show error when login with invalid username</name>
+            <title>Should show error when login with invalid username</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='codeceptjs'/>
+            </labels>
+            <parameters/>
+            <steps>
+                <step start='1740512412617' status='passed' stop='1740512443503'>
+                    <name>Given I am on the login page ""</name>
+                    <title>Given I am on the login page ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512412617' status='passed' stop='1740512443503'>
+                            <name>On LoginPage: goto </name>
+                            <title>On LoginPage: goto </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512412617' status='passed' stop='1740512443503'>
+                                    <name>I am on page "/"</name>
+                                    <title>I am on page "/"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512443503' status='passed' stop='1740512443672'>
+                    <name>When I fill the username "demo1" ""</name>
+                    <title>When I fill the username "demo1" ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512443503' status='passed' stop='1740512443672'>
+                            <name>On LoginPage: fill username "demo1"</name>
+                            <title>On LoginPage: fill username "demo1"</title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512443503' status='passed' stop='1740512443672'>
+                                    <name>I fill field "[name="username"]", "demo1"</name>
+                                    <title>I fill field "[name="username"]", "demo1"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512443672' status='passed' stop='1740512443832'>
+                    <name>And I fill the password "demo" ""</name>
+                    <title>And I fill the password "demo" ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512443672' status='passed' stop='1740512443832'>
+                            <name>On LoginPage: fill password "demo"</name>
+                            <title>On LoginPage: fill password "demo"</title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512443672' status='passed' stop='1740512443832'>
+                                    <name>I fill field "[name="password"]", "demo"</name>
+                                    <title>I fill field "[name="password"]", "demo"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512443832' status='passed' stop='1740512443955'>
+                    <name>And I submit the login form ""</name>
+                    <title>And I submit the login form ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512443832' status='passed' stop='1740512443955'>
+                            <name>On LoginPage: submit login </name>
+                            <title>On LoginPage: submit login </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512443832' status='passed' stop='1740512443955'>
+                                    <name>I click "//*[@id="loginform"]/button"</name>
+                                    <title>I click "//*[@id="loginform"]/button"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512443955' status='passed' stop='1740512445240'>
+                    <name>Then I see "Wrong username or password." on the error message ""</name>
+                    <title>Then I see "Wrong username or password." on the error message ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512443955' status='passed' stop='1740512445240'>
+                            <name>On ErrorPage: get error text </name>
+                            <title>On ErrorPage: get error text </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512443955' status='passed' stop='1740512445240'>
+                                    <name>I grab text from "div.message.danger"</name>
+                                    <title>I grab text from "div.message.danger"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1740512445252' status='passed' stop='1740512476975'>
+            <name>Should show error when login with invalid password</name>
+            <title>Should show error when login with invalid password</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='codeceptjs'/>
+            </labels>
+            <parameters/>
+            <steps>
+                <step start='1740512445447' status='passed' stop='1740512476295'>
+                    <name>Given I am on the login page ""</name>
+                    <title>Given I am on the login page ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512445447' status='passed' stop='1740512476295'>
+                            <name>On LoginPage: goto </name>
+                            <title>On LoginPage: goto </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512445447' status='passed' stop='1740512476295'>
+                                    <name>I am on page "/"</name>
+                                    <title>I am on page "/"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512476295' status='passed' stop='1740512476451'>
+                    <name>When I fill the username "demo" ""</name>
+                    <title>When I fill the username "demo" ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512476295' status='passed' stop='1740512476451'>
+                            <name>On LoginPage: fill username "demo"</name>
+                            <title>On LoginPage: fill username "demo"</title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512476295' status='passed' stop='1740512476451'>
+                                    <name>I fill field "[name="username"]", "demo"</name>
+                                    <title>I fill field "[name="username"]", "demo"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512476451' status='passed' stop='1740512476658'>
+                    <name>And I fill the password "demo1" ""</name>
+                    <title>And I fill the password "demo1" ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512476451' status='passed' stop='1740512476658'>
+                            <name>On LoginPage: fill password "demo1"</name>
+                            <title>On LoginPage: fill password "demo1"</title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512476451' status='passed' stop='1740512476658'>
+                                    <name>I fill field "[name="password"]", "demo1"</name>
+                                    <title>I fill field "[name="password"]", "demo1"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512476658' status='passed' stop='1740512476793'>
+                    <name>And I submit the login form ""</name>
+                    <title>And I submit the login form ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512476659' status='passed' stop='1740512476793'>
+                            <name>On LoginPage: submit login </name>
+                            <title>On LoginPage: submit login </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512476659' status='passed' stop='1740512476793'>
+                                    <name>I click "//*[@id="loginform"]/button"</name>
+                                    <title>I click "//*[@id="loginform"]/button"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1740512476793' status='passed' stop='1740512476975'>
+                    <name>Then I see "Wrong username or password." on the error message ""</name>
+                    <title>Then I see "Wrong username or password." on the error message ""</title>
+                    <attachments/>
+                    <steps>
+                        <step start='1740512476793' status='passed' stop='1740512476975'>
+                            <name>On ErrorPage: get error text </name>
+                            <title>On ErrorPage: get error text </title>
+                            <attachments/>
+                            <steps>
+                                <step start='1740512476793' status='passed' stop='1740512476974'>
+                                    <name>I grab text from "div.message.danger"</name>
+                                    <title>I grab text from "div.message.danger"</title>
+                                    <attachments/>
+                                    <steps/>
+                                </step>
+                            </steps>
+                        </step>
+                    </steps>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
