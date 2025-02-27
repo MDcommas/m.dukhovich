@@ -2,6 +2,12 @@
 node_modules
 coverage
 reports
+output
 build
 .env
 
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
